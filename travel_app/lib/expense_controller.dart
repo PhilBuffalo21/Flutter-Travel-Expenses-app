@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/models/expense.dart';
 
 class Controller extends StatefulWidget {
   @override
@@ -8,6 +9,39 @@ class Controller extends StatefulWidget {
 }
 
 class _Controller extends State<Controller> {
+  List<Expense> expensesList = [
+    Expense(
+        title: 'Valentine Dinner',
+        amount: 399.99,
+        date: DateTime(2024, 2, 14),
+        category: Category.food),
+    Expense(
+        title: 'Concert Tickets',
+        amount: 119.99,
+        date: DateTime(2024, 3, 1),
+        category: Category.experience),
+    Expense(
+        title: 'New Jacket',
+        amount: 89.50,
+        date: DateTime(2024, 3, 10),
+        category: Category.shopping),
+    Expense(
+        title: 'Hotel in Rome',
+        amount: 250.00,
+        date: DateTime(2024, 4, 25),
+        category: Category.accommodation),
+    Expense(
+        title: 'Grocery Shopping',
+        amount: 60.30,
+        date: DateTime(2024, 5, 2),
+        category: Category.food),
+    Expense(
+        title: 'Museum Donation',
+        amount: 50.00,
+        date: DateTime(2024, 6, 18),
+        category: Category.experience)
+  ];
+  // Add more expenses as needed];
   @override
   Widget build(BuildContext context) {
     return const Text("Expenses");
