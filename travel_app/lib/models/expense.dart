@@ -1,6 +1,6 @@
 import 'package:uuid/uuid.dart';
 
-enum Category { food, experience, shopping, accommendation }
+enum Category { food, experience, shopping, accommodation }
 
 const uuid = Uuid();
 
