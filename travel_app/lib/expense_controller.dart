@@ -44,6 +44,10 @@ class _Controller extends State<Controller> {
   // Add more expenses as needed];
   @override
   Widget build(BuildContext context) {
-    return const Text("Expenses");
+    return const Scaffold(
+      body: Column(
+        children: [],
+      ),
+    );
   }
 }
