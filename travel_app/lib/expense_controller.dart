@@ -46,7 +46,11 @@ class _Controller extends State<Controller> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-        children: [],
+        children: [
+          Text("Travel Expenses"),
+          Text("Chart goes here"),
+          Text("List goes here")
+        ],
       ),
     );
   }
