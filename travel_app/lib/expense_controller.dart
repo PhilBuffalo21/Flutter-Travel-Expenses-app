@@ -46,6 +46,10 @@ class _Controller extends State<Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Welcome to the app"),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+      ),
       body: Column(
         children: [
           const Text("Travel Expenses"),
