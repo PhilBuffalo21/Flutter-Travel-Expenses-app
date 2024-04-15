@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 enum Category { food, experience, shopping, accommodation }
@@ -10,6 +11,7 @@ Map categoryIcons = {
   Category.accommodation: Icons.holiday_village
 };
 const uuid = Uuid();
+final dateFormatter = DateFormat('EEE', 'D/m/y');
 
 class Expense {
   Expense(
@@ -23,4 +25,7 @@ class Expense {
   final double amount;
   final DateTime date;
   final Category category;
+  String get formattedDate {
+    return dateFormatter.format(date);
+  }
 }
