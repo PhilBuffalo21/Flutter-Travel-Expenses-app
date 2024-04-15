@@ -11,7 +11,7 @@ Map categoryIcons = {
   Category.accommodation: Icons.holiday_village
 };
 const uuid = Uuid();
-final dateFormatter = DateFormat('EEE', 'D/m/y');
+final dateFormatter = DateFormat.yMd();
 
 class Expense {
   Expense(
