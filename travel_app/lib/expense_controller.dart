@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/widgets/expensesListWidget.dart';
 import 'package:travel_app/models/expense.dart';
@@ -42,13 +44,19 @@ class _Controller extends State<Controller> {
         date: DateTime(2024, 6, 18),
         category: Category.experience)
   ];
-  // Add more expenses as needed];
+  void _addButtonOverlay() {
+    showModalBottomSheet(
+        context: context, builder: (context) => const Text("Penis"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Welcome to the app"),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+        actions: [
+          IconButton(onPressed: _addButtonOverlay, icon: const Icon(Icons.add))
+        ],
       ),
       body: Column(
         children: [
