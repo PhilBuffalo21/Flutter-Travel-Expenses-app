@@ -52,7 +52,6 @@ class _Controller extends State<Controller> {
       ),
       body: Column(
         children: [
-          const Text("Travel Expenses"),
           const Text("Chart goes here"),
           Expanded(child: expensesList(allExpenses: expenseList))
         ],
