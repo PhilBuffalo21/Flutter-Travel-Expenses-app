@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/models/expense.dart';
 
 class expensesList extends StatelessWidget {
-  const expensesList({super.key});
+  expensesList({super.key, required this.allExpenses});
+
+  List<Expense> allExpenses;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return ListView.builder(
+        itemCount: allExpenses.length,
+        itemBuilder: (listContext, index) => Text(allExpenses[index].title));
   }
 }
