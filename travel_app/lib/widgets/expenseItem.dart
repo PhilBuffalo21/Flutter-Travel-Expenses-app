@@ -9,7 +9,26 @@ class expenseItem extends StatelessWidget {
     return Card(
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-          child: Text(expense.title)),
+          child: Column(
+            children: [
+              Text(expense.title),
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Text("\$ ${expense.amount.toStringAsFixed(2)}"),
+                      Row(
+                        children: [
+                          const Icon(Icons.fastfood),
+                          Text(expense.date.toString())
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              )
+            ],
+          )),
     );
   }
 }
