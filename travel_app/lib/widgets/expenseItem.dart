@@ -8,7 +8,7 @@ class expenseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Text(expense.title)),
     );
   }
