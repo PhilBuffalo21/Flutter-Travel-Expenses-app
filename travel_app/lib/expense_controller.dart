@@ -1,6 +1,5 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
+import 'package:travel_app/new_expense.dart';
 import 'package:travel_app/widgets/expensesListWidget.dart';
 import 'package:travel_app/models/expense.dart';
 
@@ -45,8 +44,7 @@ class _Controller extends State<Controller> {
         category: Category.experience)
   ];
   void _addButtonOverlay() {
-    showModalBottomSheet(
-        context: context, builder: (context) => const Text("Penis"));
+    showModalBottomSheet(context: context, builder: (context) => newExpense());
   }
 
   @override
