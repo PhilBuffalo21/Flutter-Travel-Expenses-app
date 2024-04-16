@@ -17,6 +17,15 @@ class _newExpense extends State<newExpense> {
     super.dispose();
   }
 
+  void openDatePicker() {
+    final today = DateTime.now();
+    final firstDate =
+        DateTime(today.year - 10, today.month - 10, today.day - 10);
+    final lastDate =
+        DateTime(today.year + 10, today.month + 10, today.day + 10);
+    showDatePicker(context: context, firstDate: firstDate, lastDate: lastDate);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +51,8 @@ class _newExpense extends State<newExpense> {
               const SizedBox(width: 35),
               const Text("Select Date"),
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.calendar_month)),
+                  onPressed: openDatePicker,
+                  icon: const Icon(Icons.calendar_month)),
             ],
           ),
           Row(
