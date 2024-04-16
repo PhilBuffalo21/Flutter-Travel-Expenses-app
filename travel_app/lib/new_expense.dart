@@ -33,6 +33,27 @@ class _newExpense extends State<newExpense> {
     });
   }
 
+  void submitExpenseCheck() {
+    final enteredMoneyAmount = double.tryParse(amountController.text);
+    final bool isInvalidAmount =
+        (enteredMoneyAmount == null || enteredMoneyAmount <= 0);
+    final bool isTitleEmpty = titleController.text.trim().isEmpty;
+    if (isTitleEmpty || isInvalidAmount || chosenDate == null) {}
+    showDialog(
+        context: context,
+        builder: (dcontext) => AlertDialog(
+              title: const Text('Invalid Input'),
+              content: const Text('Check your input'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(dcontext);
+                    },
+                    child: const Text("Close"))
+              ],
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -94,7 +115,8 @@ class _newExpense extends State<newExpense> {
           Row(
             children: [
               ElevatedButton(
-                  onPressed: () {}, child: const Text("Save Expense")),
+                  onPressed: submitExpenseCheck,
+                  child: const Text("Save Expense")),
               const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
               ElevatedButton(
                   onPressed: () {
