@@ -9,6 +9,7 @@ class newExpense extends StatefulWidget {
 
 class _newExpense extends State<newExpense> {
   final titleController = TextEditingController();
+  final amountController = TextEditingController();
   @override
   void titleControllerDisposer() {
     titleController.dispose();
@@ -25,6 +26,13 @@ class _newExpense extends State<newExpense> {
             controller: titleController,
             maxLength: 64,
             decoration: const InputDecoration(label: Text("Title")),
+          ),
+          TextField(
+            controller: amountController,
+            keyboardType: TextInputType.number,
+            maxLength: 64,
+            decoration:
+                const InputDecoration(label: Text("Amount"), prefixText: "\$"),
           ),
           Row(
             children: [
