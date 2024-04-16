@@ -8,15 +8,23 @@ class newExpense extends StatefulWidget {
 }
 
 class _newExpense extends State<newExpense> {
+  final titleController = TextEditingController();
+  @override
+  void titleControllerDisposer() {
+    titleController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          const TextField(
+          TextField(
+            controller: titleController,
             maxLength: 64,
-            decoration: InputDecoration(label: Text("Title")),
+            decoration: const InputDecoration(label: Text("Title")),
           ),
           Row(
             children: [
