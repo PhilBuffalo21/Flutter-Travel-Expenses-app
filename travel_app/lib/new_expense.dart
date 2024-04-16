@@ -28,16 +28,33 @@ class _newExpense extends State<newExpense> {
             maxLength: 64,
             decoration: const InputDecoration(label: Text("Title")),
           ),
-          TextField(
-            controller: amountController,
-            keyboardType: TextInputType.number,
-            maxLength: 64,
-            decoration:
-                const InputDecoration(label: Text("Amount"), prefixText: "\$"),
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: amountController,
+                  keyboardType: TextInputType.number,
+                  maxLength: 64,
+                  decoration: const InputDecoration(
+                      label: Text("Amount"), prefixText: "\$"),
+                ),
+              ),
+              const SizedBox(width: 35),
+              const Text("Select Date"),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.calendar_month)),
+            ],
           ),
           Row(
             children: [
-              ElevatedButton(onPressed: () {}, child: const Text("Save Title"))
+              ElevatedButton(
+                  onPressed: () {}, child: const Text("Save Expense")),
+              const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Cancel"))
             ],
           )
         ],
