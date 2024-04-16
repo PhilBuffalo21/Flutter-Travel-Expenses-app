@@ -17,13 +17,15 @@ class _newExpense extends State<newExpense> {
     super.dispose();
   }
 
-  void openDatePicker() {
+  void openDatePicker() async {
     final today = DateTime.now();
     final firstDate =
         DateTime(today.year - 10, today.month - 10, today.day - 10);
     final lastDate =
         DateTime(today.year + 10, today.month + 10, today.day + 10);
-    showDatePicker(context: context, firstDate: firstDate, lastDate: lastDate);
+    final pickedDate = await showDatePicker(
+        context: context, firstDate: firstDate, lastDate: lastDate);
+    print(pickedDate);
   }
 
   @override
