@@ -12,6 +12,7 @@ class _newExpense extends State<newExpense> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
   DateTime? chosenDate;
+  Category chosenCategory = Category.food;
   @override
   void controllersDisposer() {
     titleController.dispose();
@@ -63,6 +64,31 @@ class _newExpense extends State<newExpense> {
               IconButton(
                   onPressed: openDatePicker,
                   icon: const Icon(Icons.calendar_month)),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("Category"),
+              const SizedBox(
+                width: 30,
+              ),
+              DropdownButton(
+                  value: chosenCategory,
+                  items: Category.values
+                      .map((category) => DropdownMenuItem(
+                            value: category,
+                            child: Text(category.name.toUpperCase()),
+                          ))
+                      .toList(),
+                  onChanged: (value) {
+                    if (value == null) {
+                      return;
+                    } else {
+                      setState(() {
+                        chosenCategory = value;
+                      });
+                    }
+                  })
             ],
           ),
           Row(
