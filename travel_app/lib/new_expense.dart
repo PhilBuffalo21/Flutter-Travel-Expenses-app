@@ -11,8 +11,9 @@ class _newExpense extends State<newExpense> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
   @override
-  void titleControllerDisposer() {
+  void controllersDisposer() {
     titleController.dispose();
+    amountController.dispose();
     super.dispose();
   }
 
