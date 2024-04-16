@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/models/expense.dart';
 
 class newExpense extends StatefulWidget {
   @override
@@ -54,7 +55,11 @@ class _newExpense extends State<newExpense> {
                 ),
               ),
               const SizedBox(width: 35),
-              const Text("Select Date"),
+              Text(chosenDate == null
+                  ? "Select Date"
+                  : dateFormatter
+                      .format(chosenDate!)), // '!' to ensure the dart system
+              // that the value won't be null at the point where it's used.
               IconButton(
                   onPressed: openDatePicker,
                   icon: const Icon(Icons.calendar_month)),
