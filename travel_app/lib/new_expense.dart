@@ -10,6 +10,7 @@ class newExpense extends StatefulWidget {
 class _newExpense extends State<newExpense> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  DateTime? chosenDate;
   @override
   void controllersDisposer() {
     titleController.dispose();
@@ -25,7 +26,9 @@ class _newExpense extends State<newExpense> {
         DateTime(today.year + 10, today.month + 10, today.day + 10);
     final pickedDate = await showDatePicker(
         context: context, firstDate: firstDate, lastDate: lastDate);
-    print(pickedDate);
+    setState(() {
+      chosenDate = pickedDate;
+    });
   }
 
   @override
