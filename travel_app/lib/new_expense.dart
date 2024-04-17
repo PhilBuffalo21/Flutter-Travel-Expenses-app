@@ -37,7 +37,7 @@ class _newExpense extends State<newExpense> {
     });
   }
 
-  void submitExpense() {
+  bool submitExpense() {
     final enteredMoneyAmount = double.tryParse(amountController.text);
     final bool isInvalidAmount =
         (enteredMoneyAmount == null || enteredMoneyAmount <= 0);
@@ -56,19 +56,20 @@ class _newExpense extends State<newExpense> {
                       child: const Text("Close"))
                 ],
               ));
-      return;
+      return false;
     }
     widget.addExpenseFunc(Expense(
         title: titleController.text,
         date: chosenDate!,
         amount: enteredMoneyAmount,
         category: chosenCategory));
+    return true;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.fromLTRB(10, 35, 10, 10),
       child: Column(
         children: [
           TextField(
@@ -126,9 +127,12 @@ class _newExpense extends State<newExpense> {
           Row(
             children: [
               ElevatedButton(
-                  onPressed: () {
-                    submitExpense();
-                    Navigator.pop(context);
+                  onPressed: () async {
+                    bool shouldPop =
+                        await submitExpense(); // Assuming submitExpense now returns a Future<bool>
+                    if (shouldPop) {
+                      Navigator.pop(context);
+                    }
                   },
                   child: const Text("Save Expense")),
               const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
