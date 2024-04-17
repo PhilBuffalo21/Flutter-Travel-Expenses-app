@@ -44,7 +44,17 @@ class _Controller extends State<Controller> {
         category: Category.experience)
   ];
   void _addButtonOverlay() {
-    showModalBottomSheet(context: context, builder: (context) => newExpense());
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => newExpense(
+              addExpenseFunc: addExpense,
+            ));
+  }
+
+  void addExpense(Expense e) {
+    setState(() {
+      expenseList.add(e);
+    });
   }
 
   @override

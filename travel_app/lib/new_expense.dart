@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/models/expense.dart';
 
 class newExpense extends StatefulWidget {
+  void Function(Expense expense) addExpenseFunc;
+
+  newExpense({super.key, required this.addExpenseFunc(Expense expense)});
+
   @override
   State<StatefulWidget> createState() {
     return _newExpense();
@@ -33,25 +37,32 @@ class _newExpense extends State<newExpense> {
     });
   }
 
-  void submitExpenseCheck() {
+  void submitExpense() {
     final enteredMoneyAmount = double.tryParse(amountController.text);
     final bool isInvalidAmount =
         (enteredMoneyAmount == null || enteredMoneyAmount <= 0);
     final bool isTitleEmpty = titleController.text.trim().isEmpty;
-    if (isTitleEmpty || isInvalidAmount || chosenDate == null) {}
-    showDialog(
-        context: context,
-        builder: (dcontext) => AlertDialog(
-              title: const Text('Invalid Input'),
-              content: const Text('Check your input'),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(dcontext);
-                    },
-                    child: const Text("Close"))
-              ],
-            ));
+    if (isTitleEmpty || isInvalidAmount || chosenDate == null) {
+      showDialog(
+          context: context,
+          builder: (dcontext) => AlertDialog(
+                title: const Text('Invalid Input'),
+                content: const Text('Check your input'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(dcontext);
+                      },
+                      child: const Text("Close"))
+                ],
+              ));
+      return;
+    }
+    widget.addExpenseFunc(Expense(
+        title: titleController.text,
+        date: chosenDate!,
+        amount: enteredMoneyAmount,
+        category: chosenCategory));
   }
 
   @override
@@ -115,8 +126,7 @@ class _newExpense extends State<newExpense> {
           Row(
             children: [
               ElevatedButton(
-                  onPressed: submitExpenseCheck,
-                  child: const Text("Save Expense")),
+                  onPressed: submitExpense, child: const Text("Save Expense")),
               const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
               ElevatedButton(
                   onPressed: () {
