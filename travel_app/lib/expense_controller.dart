@@ -45,6 +45,7 @@ class _Controller extends State<Controller> {
   ];
   void _addButtonOverlay() {
     showModalBottomSheet(
+        //isScrollControlled: true,
         context: context,
         builder: (context) => newExpense(
               addExpenseFunc: addExpense,
