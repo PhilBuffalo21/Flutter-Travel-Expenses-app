@@ -126,7 +126,11 @@ class _newExpense extends State<newExpense> {
           Row(
             children: [
               ElevatedButton(
-                  onPressed: submitExpense, child: const Text("Save Expense")),
+                  onPressed: () {
+                    submitExpense();
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Save Expense")),
               const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
               ElevatedButton(
                   onPressed: () {
