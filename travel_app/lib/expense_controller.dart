@@ -63,6 +63,7 @@ class _Controller extends State<Controller> {
     setState(() {
       expenseList.remove(e);
     });
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: const Text("Expense deleted"),
       duration: const Duration(minutes: 10),
