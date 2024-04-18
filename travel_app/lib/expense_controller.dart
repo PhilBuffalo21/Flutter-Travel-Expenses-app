@@ -66,6 +66,18 @@ class _Controller extends State<Controller> {
 
   @override
   Widget build(BuildContext context) {
+    Widget defaultScreen =
+        // default screen when there isn't an item in the expense list.
+        const Center(
+      child: Text("aint nothing to see here."),
+    );
+    if (expenseList.isNotEmpty) {
+      defaultScreen = expensesList(
+        allExpenses: expenseList,
+        removeExpenseFunction: removeExpense,
+      );
+    }
+    ;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Welcome to the app"),
@@ -76,11 +88,7 @@ class _Controller extends State<Controller> {
       body: Column(
         children: [
           const Text("Chart goes here"),
-          Expanded(
-              child: expensesList(
-            allExpenses: expenseList,
-            removeExpenseFunction: removeExpense,
-          ))
+          Expanded(child: defaultScreen)
         ],
       ),
     );
