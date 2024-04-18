@@ -59,9 +59,21 @@ class _Controller extends State<Controller> {
   }
 
   void removeExpense(Expense e) {
+    final itemIndex = expenseList.indexOf(e);
     setState(() {
       expenseList.remove(e);
     });
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text("Expense deleted"),
+      duration: const Duration(minutes: 10),
+      action: SnackBarAction(
+          label: "redo ${e.title}?",
+          onPressed: () {
+            setState(() {
+              expenseList.insert(itemIndex, e);
+            });
+          }),
+    ));
   }
 
   @override
