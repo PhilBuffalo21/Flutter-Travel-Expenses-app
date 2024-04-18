@@ -58,6 +58,12 @@ class _Controller extends State<Controller> {
     });
   }
 
+  void removeExpense(Expense e) {
+    setState(() {
+      expenseList.remove(e);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +76,11 @@ class _Controller extends State<Controller> {
       body: Column(
         children: [
           const Text("Chart goes here"),
-          Expanded(child: expensesList(allExpenses: expenseList))
+          Expanded(
+              child: expensesList(
+            allExpenses: expenseList,
+            removeExpenseFunction: removeExpense,
+          ))
         ],
       ),
     );
