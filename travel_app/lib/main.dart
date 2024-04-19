@@ -33,10 +33,8 @@ class MyApp extends StatelessWidget {
                   fontSize: 25,
                   color: lightTheme.onPrimaryContainer,
                   fontWeight: FontWeight.bold),
-              bodySmall: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: lightTheme.onPrimaryContainer),
+              bodySmall:
+                  TextStyle(fontSize: 15, color: lightTheme.onPrimaryContainer),
               headlineMedium: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

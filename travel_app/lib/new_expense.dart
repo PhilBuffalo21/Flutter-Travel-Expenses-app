@@ -89,10 +89,12 @@ class _newExpense extends State<newExpense> {
                 ),
               ),
               const SizedBox(width: 35),
-              Text(chosenDate == null
-                  ? "Select Date"
-                  : dateFormatter
-                      .format(chosenDate!)), // '!' to ensure the dart system
+              Text(
+                chosenDate == null
+                    ? "Select Date"
+                    : dateFormatter.format(chosenDate!),
+                style: Theme.of(context).textTheme.bodySmall,
+              ), // '!' to ensure the dart system
               // that the value won't be null at the point where it's used.
               IconButton(
                   onPressed: openDatePicker,
@@ -101,7 +103,10 @@ class _newExpense extends State<newExpense> {
           ),
           Row(
             children: [
-              const Text("Category"),
+              Text(
+                "Category",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const SizedBox(
                 width: 30,
               ),
@@ -110,7 +115,10 @@ class _newExpense extends State<newExpense> {
                   items: Category.values
                       .map((category) => DropdownMenuItem(
                             value: category,
-                            child: Text(category.name.toUpperCase()),
+                            child: Text(
+                              category.name.toUpperCase(),
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
                           ))
                       .toList(),
                   onChanged: (value) {
