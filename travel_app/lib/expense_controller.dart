@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/chart.dart';
 import 'package:travel_app/new_expense.dart';
 import 'package:travel_app/widgets/expensesListWidget.dart';
 import 'package:travel_app/models/expense.dart';
@@ -102,7 +103,7 @@ class _Controller extends State<Controller> {
       ),
       body: Column(
         children: [
-          const Text("Chart goes here"),
+          Chart(expenses: expenseList),
           Expanded(child: defaultScreen)
         ],
       ),
