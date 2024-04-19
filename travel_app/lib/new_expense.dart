@@ -46,14 +46,23 @@ class _newExpense extends State<newExpense> {
       showDialog(
           context: context,
           builder: (dcontext) => AlertDialog(
-                title: const Text('Invalid Input'),
-                content: const Text('Check your input'),
+                title: Text(
+                  'Invalid Input',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                content: Text(
+                  'Check your input',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
                 actions: [
                   TextButton(
                       onPressed: () {
                         Navigator.pop(dcontext);
                       },
-                      child: const Text("Close"))
+                      child: Text(
+                        "Close",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ))
                 ],
               ));
       return false;
