@@ -93,7 +93,9 @@ class _Controller extends State<Controller> {
     ;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Welcome to the app"),
+        title: const Text(
+          "Welcome to the app",
+        ),
         actions: [
           IconButton(onPressed: _addButtonOverlay, icon: const Icon(Icons.add))
         ],
