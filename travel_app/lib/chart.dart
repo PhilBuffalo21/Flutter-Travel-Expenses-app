@@ -14,6 +14,17 @@ class Chart extends StatelessWidget {
     ];
   }
 
+  // most expensive in all category
+  double mostExpensive() {
+    double mostExpensiveExpense = expenses[0].amount;
+    for (final expense in individualExpenses) {
+      if (expense.getSumTotalofExpenses > mostExpensiveExpense) {
+        mostExpensiveExpense = expense.getSumTotalofExpenses;
+      }
+    }
+    return mostExpensiveExpense;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
