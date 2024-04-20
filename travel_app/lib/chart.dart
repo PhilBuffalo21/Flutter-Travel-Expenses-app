@@ -19,7 +19,7 @@ class Chart extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      width: 10,
+      width: double.infinity,
       height: 220,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -28,6 +28,7 @@ class Chart extends StatelessWidget {
             Theme.of(context).primaryColor.withOpacity(0.2)
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           for (final bucket in individualExpenses)
             Text(bucket.getSumTotalofExpenses.toString())
