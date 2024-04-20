@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/chart_bar.dart';
 import 'package:travel_app/models/expense.dart';
+import 'package:travel_app/widgets/expenseItem.dart';
 
 class Chart extends StatelessWidget {
   const Chart({super.key, required this.expenses});
@@ -27,6 +29,16 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final biggestExpense = mostExpensive();
+    final categoryIconsWidgets = individualExpenses.map((bucket) {
+      return Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: Icon(categoryIcons[
+              bucket.category]), // Assuming categoryIcons is a defined map
+        ),
+      );
+    }).toList();
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -38,11 +50,25 @@ class Chart extends StatelessWidget {
             Theme.of(context).primaryColor.withOpacity(0.8),
             Theme.of(context).primaryColor.withOpacity(0.2)
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      child: Column(
         children: [
-          for (final bucket in individualExpenses)
-            Text(bucket.getSumTotalofExpenses.toString())
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                for (final bucket in individualExpenses)
+                  ChartBar(
+                      proportion: bucket.getSumTotalofExpenses == 0 ||
+                              biggestExpense == 0
+                          ? 0
+                          : bucket.getSumTotalofExpenses / biggestExpense),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: categoryIconsWidgets,
+          )
         ],
       ),
     );
