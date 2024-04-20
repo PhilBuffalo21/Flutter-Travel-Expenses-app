@@ -3,8 +3,9 @@ import 'package:travel_app/expense_controller.dart';
 
 var lightTheme =
     ColorScheme.fromSeed(seedColor: const Color.fromRGBO(228, 153, 154, 100));
-var darkTheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromRGBO(186, 54, 54, 100));
+var darkTheme = ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromRGBO(186, 54, 54, 100));
 
 void main() {
   runApp(const MyApp());
